@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Add User</title>
+	<link type="text/css" rel="stylesheet" href="../../bootstrap.min.css"  />
+	<style>
+		.error{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="container col-6">
+		<div class="card">
+			<div class="card-header">
+				<h2 style="text-align: center;">ADD NEW USER</h2>
+			</div>
+			<form th:object="${product}" th:action="@{/admin/product/save}" action="#" method="post">
+				<div class="card-body">
+					<div>
+			            <label th:text="ProductName" th:for="productName"></label>
+			            <input type="text" th:field="*{productName}" class="form-control"/>
+			        </div>
+			        <div style="clear: both; display: block; height: 10px"></div>
+			        <div>
+			            <label th:text="Image" th:for="image"></label>
+			            <input type="file" th:field="*{image}" class="form-control" />
+			        </div>
+			        <div style="clear: both; display: block; height: 10px"></div>
+			        <div>
+			            <label th:text="Price" th:for="price"></label>
+			            <input type="text" th:field="*{price}" class="form-control"/>
+			        </div>
+			        <div style="clear: both; display: block; height: 10px"></div>
+			        <div>
+			            <label th:text="Quantity" th:for="quantity"></label>
+			            <input type="number" th:field="*{quantity}" class="form-control"/>
+			        </div>
+			        <div style="clear: both; display: block; height: 10px"></div>
+			        
+			        <div>
+			            <label th:text="Description" th:for="description"></label>
+			            <input type="text" th:field="*{description}" class="form-control"/>
+			        </div>
+			        <div style="clear: both; display: block; height: 10px"></div>
+					<div>
+						<label th:text="CategoryName" th:for="category.categoryID"></label> 
+						<select th:field="*{category.categoryID}" class="form-control">
+							<option value=""></option>
+							<option th:each="category : ${categories}" th:text="${category.categoryName}" th:value="${category.categoryID}" />
+						</select>
+					</div>
+					<div style="clear: both; display: block; height: 10px"></div>
+					<div>
+						<label th:text="SupplierName" th:for="supplier.supplierID"></label> 
+						<select th:field="*{supplier.supplierID}" class="form-control">
+							<option value=""></option>
+							<option th:each="supplier : ${suppliers}" th:text="${supplier.supplierName}" th:value="${supplier.supplierID}" />
+						</select>
+					</div>
+				</div>
+				<div class="card-footer">
+					<input type="submit" class="btn btn-success" value="Save" />
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

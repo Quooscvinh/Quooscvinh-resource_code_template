@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <link type="text/css" rel="stylesheet" href="../../bootstrap.min.css" />
+</head>
+<body>
+	<div class="container col-6">
+		<div class="card">
+			<div class="card-header">
+				<h2 style="text-align: center;">Edit User</h2>
+			</div>
+		    <form th:object="${category}" th:action="@{/admin/category/save}" action="#" method="post">
+				<div class="card-body">
+					<input type="hidden" th:field="*{categoryID}">
+					<div>
+			            <label th:text="CategoryName" th:for="categoryName"></label>
+			            <input type="text" th:field="*{categoryName}" class="form-control"/>
+			        </div>
+			        <div style="clear: both; display: block; height: 10px"></div>
+			        
+				</div>
+				<div class="card-footer">
+					<input type="submit" class="btn btn-success" value="Save" />
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
