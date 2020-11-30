@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <link type="text/css" rel="stylesheet" href="../../bootstrap.min.css" />
+    <script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container col-6">
+		<div class="card">
+			<div class="card-header">
+				<h2 style="text-align: center;">Edit User</h2>
+			</div>
+		    <form th:object="${blog}" th:action="@{/admin/blog/update}" action="#" method="post">
+				<div class="card-body">
+					<input type="hidden" th:field="*{blogID}">
+					<div>
+			            <label th:text="Title" th:for="title"></label>
+			            <input type="text" th:field="*{title}" class="form-control"/>
+			        </div>
+			        <div style="clear: both; display: block; height: 10px"></div>
+			        <div>
+			            <label th:text="Content" th:for="content"></label>
+			            <textarea rows="" cols="" id="content" name="content" style="width: 820px; height: 175px" th:field="*{content}"></textarea>
+			        </div>
+
+				</div>
+				<div class="card-footer">
+					<input type="submit" class="btn btn-success" value="Save" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var editor = '';
+		$(document).ready(function() {
+			editor = CKEDITOR.replace('content');
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.springframework.org/schema/data/jaxb"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/index.html}">
+<head>
+<meta charset="utf-8">
+<title>BEEBRICK | ADMIN</title>
+</head>
+
+<body>
+			<!-- page content -->
+			<div class="right_col" role="main" layout:fragment="content">
+				<div class="">
+					<div class="clearfix"></div>
+
+					<!-- Start Page Content -->
+					<!-- ============================================================== -->
+					<!-- Row -->
+					<form th:object="${product}" th:action="@{/admin/product/update}" action="#" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<!-- Column -->
+							<div class="col-lg-4 col-xlg-3 col-md-5">
+								<div class="card">
+									<div class="card-body">
+										<center class="m-t-30">
+											<img th:src="@{'/getimage/' + ${product.image}}"
+												class="img-circle" alt="avatar" height="150px" width="150">
+											<div style="clear: both; display: block; height: 10px"></div>
+											<h6>Upload a different photo...</h6>
+											<label th:for="image"></label> <input type="file"
+												class="text-center center-block file-upload"
+												name="photo_file" id="photo_file"> <input
+												type="hidden" th:field="*{image}">
+										</center>
+									</div>
+								</div>
+								<div class="card">
+									<div class="card-body" style="text-align: center;">
+										<a>ID </a> <a th:text="*{productID}" style="text-align: center;"></a>
+									</div>
+								</div>
+							</div>
+							<!-- Column -->
+							<div class="col-lg-8 col-xlg-9 col-md-7">
+								<div class="card">
+									<!-- Tab panes -->
+									<div class="card-body">
+										<form class="form-horizontal form-material">
+											<div class="card-body">
+											<input type="hidden" th:field="*{productID}">
+												<div>
+													<label th:for="productName">Product Name</label> <input
+														type="text" th:field="*{productName}"
+														class="form-control form-control-line" />
+
+												</div>
+												<div style="clear: both; display: block; height: 10px"></div>
+												<div>
+													<label th:for="price">Price</label> <input
+														type="text" th:field="*{price}"
+														class="form-control form-control-line" />
+
+												</div>
+												<div style="clear: both; display: block; height: 10px"></div>
+												<div>
+													<label th:for="quantity">Quantity</label> <input
+														type="text" th:field="*{quantity}"
+														class="form-control form-control-line" />
+
+												</div>
+												<div style="clear: both; display: block; height: 10px"></div>
+												<div>
+													<label th:for="category.categoryID"> Category Name</label> <select
+														th:field="*{category.categoryID}" class="form-control">
+														<option value=""></option>
+														<option th:each="category : ${categories}" th:text="${category.categoryName}" th:value="${category.categoryID}" />
+													</select>
+												</div>
+												<div style="clear: both; display: block; height: 10px"></div>
+												<div>
+													<label th:for="manufacturer.manufacturerID"> Manufacturer Name</label> <select
+														th:field="*{manufacturer.manufacturerID}" class="form-control">
+														<option value=""></option>
+														<option th:each="manufacturer : ${manufacturers}" th:text="${manufacturer.manufacturerName}" th:value="${manufacturer.manufacturerID}" />
+													</select>
+												</div>
+												<div style="clear: both; display: block; height: 10px"></div>
+												<div class="form-group">
+													<div class="col-sm-12">
+														<input type="submit" class="btn btn-success" value="Save" />
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							</div>
+							<!-- Column -->
+					</form>
+					<!-- Row -->
+					<!-- ============================================================== -->
+					<!-- End PAge Content -->
+					<!-- ============================================================== -->
+				</div>
+			</div>
+		
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var readURL = function(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+
+					reader.onload = function(e) {
+						$('.img-circle').attr('src', e.target.result);
+					}
+
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+
+			$(".file-upload").on('change', function() {
+				readURL(this);
+			});
+		});
+	</script>
+</body>
+</html>

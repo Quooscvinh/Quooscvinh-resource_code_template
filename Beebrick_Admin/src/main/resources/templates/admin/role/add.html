@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.springframework.org/schema/data/jaxb"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/index.html}">
+<head>
+<meta charset="utf-8">
+<title>BEEBRICK | ADMIN</title>
+</head>
+
+<body>
+
+	<!-- page content -->
+	<div class="right_col" role="main" layout:fragment="content">
+		<div class="">
+			<div class="clearfix"></div>
+
+			<!-- Start Page Content -->
+			<!-- ============================================================== -->
+			<!-- Row -->
+			<form th:object="${role}" th:action="@{/admin/role/save}" action="#"
+				method="post">
+				<div class="row">
+					<!-- Column -->
+					<!-- Column -->
+					<div class="col-lg-12 col-xlg-9 col-md-7">
+						<div class="card">
+							<!-- Tab panes -->
+							<div class="card-body">
+								<form class="form-horizontal form-material">
+									<div class="form-group">
+										<label class="col-md-12" th:for="roleName">Role</label>
+										<div class="col-md-12">
+											<input type="text" th:field="*{roleName}" id="RoleName"
+												class="form-control form-control-line" /> <span
+												th:if="${#fields.hasErrors('roleName')}"
+												th:errors="*{roleName}" id="roleName" class="error"></span>
+											<span id="roleName" class="error"></span>
+										</div>
+									</div>
+									<div style="clear: both; display: block; height: 10px"></div>
+									<div class="form-group">
+										<div class="col-sm-12">
+											<input type="submit" class="btn btn-success" value="Save" />
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Column -->
+			</form>
+			<!-- Row -->
+			<!-- ============================================================== -->
+			<!-- End PAge Content -->
+			<!-- ============================================================== -->
+		</div>
+	</div>
+
+	<!-- /page content -->
+	<script>
+		$("#RoleName").on('input', function() {
+			var roleName = document.getElementById("RoleName").value;
+			if (roleName != "") {
+				document.getElementById("roleName").innerHTML = "";
+			}
+		});
+	</script>
+</body>
+</html>

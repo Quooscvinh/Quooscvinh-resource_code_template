@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.springframework.org/schema/data/jaxb"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/index.html}">
+<head>
+<meta charset="utf-8">
+<title>BEEBRICK | ADMIN</title>
+</head>
+
+<body>
+			<!-- page content -->
+			<div class="right_col" role="main" layout:fragment="content">
+				<div class="">
+					<div class="clearfix"></div>
+
+					<!-- Start Page Content -->
+					<!-- ============================================================== -->
+					<!-- Row -->
+					<form th:object="${category}" th:action="@{/admin/category/update}" action="#" method="post">
+						<div class="row">
+							<div class="col-lg-8 col-xlg-9 col-md-7">
+								<div class="card">
+									<!-- Tab panes -->
+									<div class="card-body">
+										<form class="form-horizontal form-material">
+											<div class="card-body">
+												<input type="hidden" th:field="*{categoryID}">
+												<div>
+													<label th:for="categoryName">Category Name </label> <input
+														type="text" th:field="*{categoryName}"
+														class="form-control form-control-line" />
+
+												</div>
+												<div style="clear: both; display: block; height: 10px"></div>
+												<div>
+													<label th:text="Password" th:for="password"></label> <input
+														type="text" th:field="*{password}"
+														class="form-control form-control-line" />
+
+												</div>
+												<div style="clear: both; display: block; height: 10px"></div>
+												<div>
+													<label th:for="description"> Description</label> 
+													<textarea th:field="*{description}" style="width: 1012px; height: 175px" ></textarea>
+												</div>
+								
+												<div style="clear: both; display: block; height: 10px"></div>
+												<div class="form-group">
+													<div class="col-sm-12">
+														<input type="submit" class="btn btn-success" value="Update value" />
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							</div>
+							<!-- Column -->
+					</form>
+					<!-- Row -->
+					<!-- ============================================================== -->
+					<!-- End PAge Content -->
+					<!-- ============================================================== -->
+				</div>
+			</div>
+		
+	
+</body>
+</html>
