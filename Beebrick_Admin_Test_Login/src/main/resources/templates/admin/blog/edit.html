@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.springframework.org/schema/data/jaxb"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/index.html}">
+<head>
+<meta charset="utf-8">
+<title>BEEBRICK | ADMIN</title>
+</head>
+
+<body>
+<!-- ==============================Lỗi Không nhận được ckeditor================================ -->
+			<!-- page content -->
+			<div class="right_col" role="main" layout:fragment="content">
+				<div class="">
+					<div class="clearfix"></div>
+
+					<!-- Start Page Content -->
+					<!-- ============================================================== -->
+					<!-- Row -->
+					<form th:object="${blog}" th:action="@{/admin/blog/update}" action="#" method="post">
+						<div class="row">
+							<div class="col-lg-12 col-xlg-12 col-md-12">
+								<div class="card">
+									<!-- Tab panes -->
+									<div class="card-body">
+									
+										<form class="form-horizontal form-material">
+											<div class="card-body">
+												<input type="hidden" th:field="*{blogID}">
+												<div>
+										            <label th:for="title">Title</label>
+										            <input type="text" th:field="*{title}" class="form-control form-control-line"/>
+										            
+												</div>
+												<div style="clear: both; display: block; height: 10px"></div>
+												<div>
+										            <label th:for="content">Content</label> <br>
+										            <textarea rows="" cols="" id="content" name="content" style="width: 998px; height: 175px" th:field="*{content}"></textarea>
+										        </div>
+												<div style="clear: both; display: block; height: 10px"></div>
+												<div class="form-group">
+													<div class="col-sm-12">
+														<input type="submit" class="btn btn-success" value="Update" />
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							</div>
+							<!-- Column -->
+					</form>
+					<!-- Row -->
+					<!-- ============================================================== -->
+					<!-- End PAge Content -->
+					<!-- ============================================================== -->
+				</div>
+			</div>
+		
+	<script>
+		$("#RoleName").on('input', function(){
+			var roleName = document.getElementById("RoleName").value;
+			if(roleName != ""){
+				document.getElementById("roleName").innerHTML = "";
+			}
+		});
+	</script>
+</body>
+</html>
